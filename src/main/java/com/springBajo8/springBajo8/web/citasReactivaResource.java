@@ -58,4 +58,9 @@ public class citasReactivaResource {
     private Mono<String> queryMedic(@PathVariable("id") String id) {
         return this.icitasReactivaService.queryMedic(id);
     }
+
+    @GetMapping("/citasReactivas/fecha/{fecha}/{hora}")
+    private Flux<citasDTOReactiva> findByDate(@PathVariable("fecha") String fecha, @PathVariable("hora") String hora) {
+        return this.icitasReactivaService.findByDate(fecha, hora);
+    }
 }

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Service
@@ -61,6 +63,16 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     @Override
     public Mono<citasDTOReactiva> findById(String id) {
         return this.IcitasReactivaRepository.findById(id);
+    }
+
+    @Override
+    public Flux<citasDTOReactiva> findByDate(String fecha, String hora) {
+        return this.IcitasReactivaRepository.findByFechaReservaCita(
+                        LocalDate.parse(fecha, DateTimeFormatter.ofPattern("d-MM-yyyy")))
+                .filter(citasDTOReactiva ->
+                        citasDTOReactiva.getHoraReservaCita().equals(hora)
+                )
+                .switchIfEmpty(Flux.empty());
     }
 
     @Override

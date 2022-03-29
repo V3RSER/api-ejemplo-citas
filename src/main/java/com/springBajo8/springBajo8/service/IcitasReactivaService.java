@@ -1,6 +1,7 @@
 package com.springBajo8.springBajo8.service;
 
 //import com.yoandypv.reactivestack.messages.domain.Message;
+
 import com.springBajo8.springBajo8.domain.citasDTOReactiva;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -19,6 +20,8 @@ public interface IcitasReactivaService {
     Flux<citasDTOReactiva> findAll();
 
     Mono<citasDTOReactiva> findById(String id);
+
+    Flux<citasDTOReactiva> findByDate(String fecha, String hora);
 
     Mono<String> queryMedic(String id);
 }
