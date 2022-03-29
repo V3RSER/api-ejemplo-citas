@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @Service
 public class citasReactivaServiceImpl implements IcitasReactivaService {
 
@@ -59,5 +61,13 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     @Override
     public Mono<citasDTOReactiva> findById(String id) {
         return this.IcitasReactivaRepository.findById(id);
+    }
+
+    @Override
+    public Mono<String> queryMedic(String id) {
+        return Mono.just(Objects.requireNonNull(this.IcitasReactivaRepository
+                .findById(id).block()).getNombreMedico() + " "
+                + Objects.requireNonNull(this.IcitasReactivaRepository
+                .findById(id).block()).getApellidosMedico());
     }
 }
