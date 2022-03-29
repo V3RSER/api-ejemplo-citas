@@ -76,6 +76,13 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     }
 
     @Override
+    public Flux<citasDTOReactiva> findByDateRepository(String fecha, String hora) {
+        return this.IcitasReactivaRepository.findByFechaReservaCitaAndHoraReservaCita(
+                LocalDate.parse(fecha, DateTimeFormatter.ofPattern("d-MM-yyyy")), hora)
+                .switchIfEmpty(Flux.empty());
+    }
+
+    @Override
     public Mono<String> queryMedic(String id) {
         return Mono.just(Objects.requireNonNull(this.IcitasReactivaRepository
                 .findById(id).block()).getNombreMedico() + " "

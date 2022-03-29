@@ -63,4 +63,9 @@ public class citasReactivaResource {
     private Flux<citasDTOReactiva> findByDate(@PathVariable("fecha") String fecha, @PathVariable("hora") String hora) {
         return this.icitasReactivaService.findByDate(fecha, hora);
     }
+
+    @GetMapping("/citasReactivas/fecha/{fecha}/{hora}")
+    private Flux<citasDTOReactiva> findByDateRepository(@PathVariable("fecha") String fecha, @PathVariable("hora") String hora) {
+        return this.icitasReactivaService.findByDateRepository(fecha, hora);
+    }
 }
