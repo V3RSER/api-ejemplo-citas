@@ -1,8 +1,5 @@
 package com.springBajo8.springBajo8.service.impl;
 
-//import com.yoandypv.reactivestack.messages.domain.Message;
-//import com.yoandypv.reactivestack.messages.repository.MessageRepository;
-//import com.yoandypv.reactivestack.messages.service.MessageService;
 import com.springBajo8.springBajo8.domain.citasDTOReactiva;
 import com.springBajo8.springBajo8.repository.IcitasReactivaRepository;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
@@ -27,7 +24,6 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
         return this.IcitasReactivaRepository
                 .findById(id)
                 .flatMap(p -> this.IcitasReactivaRepository.deleteById(p.getId()).thenReturn(p));
-
     }
 
     @Override
@@ -41,10 +37,19 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     }
 
     @Override
+    public Mono<citasDTOReactiva> cancel(String id) {
+        return this.IcitasReactivaRepository.findById(id)
+                .flatMap(citasDTOReactiva -> {
+                    citasDTOReactiva.setEstadoReservaCita("cancelada");
+                    return save(citasDTOReactiva);
+                })
+                .switchIfEmpty(Mono.empty());
+    }
+
+    @Override
     public Flux<citasDTOReactiva> findByIdPaciente(String idPaciente) {
         return this.IcitasReactivaRepository.findByIdPaciente(idPaciente);
     }
-
 
     @Override
     public Flux<citasDTOReactiva> findAll() {

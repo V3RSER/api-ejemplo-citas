@@ -1,6 +1,5 @@
 package com.springBajo8.springBajo8.web;
 
-
 import com.springBajo8.springBajo8.domain.citasDTOReactiva;
 import com.springBajo8.springBajo8.service.IcitasReactivaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +37,13 @@ public class citasReactivaResource {
 
     }
 
+    @PutMapping("/citasReactivas/{id}/cancelar")
+    private Mono<ResponseEntity<citasDTOReactiva>> cancel(@PathVariable("id") String id) {
+        return this.icitasReactivaService.cancel(id)
+                .flatMap(citasDTOReactiva1 -> Mono.just(ResponseEntity.ok(citasDTOReactiva1)))
+                .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+    }
+
     @GetMapping("/citasReactivas/{idPaciente}/byidPaciente")
     private Flux<citasDTOReactiva> findAllByidPaciente(@PathVariable("idPaciente") String idPaciente) {
         return this.icitasReactivaService.findByIdPaciente(idPaciente);
@@ -47,5 +53,4 @@ public class citasReactivaResource {
     private Flux<citasDTOReactiva> findAll() {
         return this.icitasReactivaService.findAll();
     }
-
 }

@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.UUID;
 
 @Document(collection = "citas")
@@ -100,8 +99,5 @@ public class citasDTOReactiva {
     public void setEstadoReservaCita(String estadoReservaCita) {
         this.estadoReservaCita = estadoReservaCita;
     }
-
-    //private Date sendedDate = new Date();
-
 
 }
