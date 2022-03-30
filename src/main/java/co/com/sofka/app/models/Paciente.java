@@ -1,4 +1,4 @@
-package com.springBajo8.springBajo8.domain;
+package co.com.sofka.app.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -6,19 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.UUID;
 
 @Document(collection = "pacientes")
-public class pacienteDTOReactivo {
-
+public class Paciente {
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
-
     private String idPaciente;
-
     private String nombrePaciente;
-
     private String apellidosPaciente;
-
     private String[] procedimientos;
-
     private String[] padecimientos;
 
     public String getId() {

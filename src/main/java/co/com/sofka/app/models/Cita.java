@@ -1,4 +1,4 @@
-package com.springBajo8.springBajo8.domain;
+package co.com.sofka.app.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,21 +7,14 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Document(collection = "citas")
-public class citasDTOReactiva {
-
+public class Cita {
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
-
     private String idPaciente;
-
     private String nombreMedico;
-
     private String apellidosMedico;
-
     private LocalDate fechaReservaCita;
-
     private String horaReservaCita;
-
     private String estadoReservaCita;
 
     public String getId() {
