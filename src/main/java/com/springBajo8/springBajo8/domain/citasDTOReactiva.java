@@ -14,10 +14,6 @@ public class citasDTOReactiva {
 
     private String idPaciente;
 
-    private String nombrePaciente;
-
-    private String apellidosPaciente;
-
     private String nombreMedico;
 
     private String apellidosMedico;
@@ -42,22 +38,6 @@ public class citasDTOReactiva {
 
     public void setIdPaciente(String idPaciente) {
         this.idPaciente = idPaciente;
-    }
-
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
-    }
-
-    public String getApellidosPaciente() {
-        return apellidosPaciente;
-    }
-
-    public void setApellidosPaciente(String apellidosPaciente) {
-        this.apellidosPaciente = apellidosPaciente;
     }
 
     public String getNombreMedico() {

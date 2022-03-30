@@ -68,7 +68,7 @@ public class citasReactivaServiceImpl implements IcitasReactivaService {
     @Override
     public Flux<citasDTOReactiva> findByDate(String fecha, String hora) {
         return this.IcitasReactivaRepository.findByFechaReservaCitaAndHoraReservaCita(
-                LocalDate.parse(fecha, DateTimeFormatter.ofPattern("d-MM-yyyy")), hora)
+                        LocalDate.parse(fecha, DateTimeFormatter.ofPattern("d-MM-yyyy")), hora)
                 .switchIfEmpty(Flux.empty());
     }
 
