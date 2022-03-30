@@ -23,7 +23,5 @@ public interface IcitasReactivaService {
 
     Flux<citasDTOReactiva> findByDate(String fecha, String hora);
 
-    Flux<citasDTOReactiva> findByDateRepository(String fecha, String hora);
-
     Mono<String> queryMedic(String id);
 }
