@@ -9,7 +9,6 @@ import java.util.UUID;
 public class Paciente {
     @Id
     private String id = UUID.randomUUID().toString().substring(0, 10);
-    private String idPaciente;
     private String nombrePaciente;
     private String apellidosPaciente;
     private String[] procedimientos;
@@ -21,14 +20,6 @@ public class Paciente {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(String idPaciente) {
-        this.idPaciente = idPaciente;
     }
 
     public String getNombrePaciente() {
